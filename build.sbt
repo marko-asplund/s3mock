@@ -4,7 +4,7 @@ version := "0.3.0-SNAPSHOT"
 
 scalaVersion in ThisBuild := "2.13.2"
 
-crossScalaVersions in ThisBuild := Seq("2.11.12", "2.12.10", "2.13.2")
+crossScalaVersions in ThisBuild := Seq("2.12.10", "2.13.2")
 
 val pekkoVersion = "1.0.1"
 val pekkoHttpVersion = "1.0.0"
