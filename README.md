@@ -25,7 +25,7 @@ Not supported features (these might be implemented later):
 
 ## Installation
 
-s3mock package is available for Scala 2.11/2.12/2.13 (on Java 8/11). To install using SBT, add these
+s3mock package is available for Scala 2.12/2.13 (on Java 8/11). To install using SBT, add these
  statements to your `build.sbt`:
 
     libraryDependencies += "io.github.marko-asplund" %% "s3mock" % "0.2.6" % "test",
@@ -133,25 +133,25 @@ Scala with AWS S3 SDK:
     api.shutdown() // this one terminates the actor system. Use api.stop() to just unbind the service without messing with the ActorSystem
 ```
 
-Scala with Alpakka 1.0.0:
+Scala with Pekko Connectors 1.0:
 ```scala
-    import akka.actor.ActorSystem
-    import akka.stream.ActorMaterializer
-    import akka.stream.alpakka.s3.scaladsl.S3Client
-    import akka.stream.scaladsl.Sink
+    import org.apache.pekko.actor.ActorSystem
+    import org.apache.pekko.stream.ActorMaterializer
+    import org.apache.pekko.stream.connectors.s3.scaladsl.S3
+    import org.apache.pekko.stream.scaladsl.Sink
     import com.typesafe.config.ConfigFactory
     import scala.collection.JavaConverters._
 
     val config = ConfigFactory.parseMap(Map(
-      "alpakka.s3.proxy.host" -> "localhost",
-      "alpakka.s3.proxy.port" -> 8001,
-      "alpakka.s3.proxy.secure" -> false,
-      "alpakka.s3.path-style-access" -> true,
-      "alpakka.s3.aws.credentials.provider" -> "static",
-      "alpakka.s3.aws.credentials.access-key-id" -> "foo",
-      "alpakka.s3.aws.credentials.secret-access-key" -> "bar",
-      "alpakka.s3.aws.region.provider" -> "static",
-      "alpakka.s3.aws.region.default-region" -> "us-east-1"      
+      "pekko.connectors.s3.proxy.host" -> "localhost",
+      "pekko.connectors.s3.proxy.port" -> 8001,
+      "pekko.connectors.s3.proxy.secure" -> false,
+      "pekko.connectors.s3.path-style-access" -> true,
+      "pekko.connectors.s3.aws.credentials.provider" -> "static",
+      "pekko.connectors.s3.aws.credentials.access-key-id" -> "foo",
+      "pekko.connectors.s3.aws.credentials.secret-access-key" -> "bar",
+      "pekko.connectors.s3.aws.region.provider" -> "static",
+      "pekko.connectors.s3.aws.region.default-region" -> "us-east-1"      
     ).asJava)
     implicit val system = ActorSystem.create("test", config)
     implicit val mat = ActorMaterializer()
