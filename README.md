@@ -28,13 +28,13 @@ Not supported features (these might be implemented later):
 s3mock package is available for Scala 2.11/2.12/2.13 (on Java 8/11). To install using SBT, add these
  statements to your `build.sbt`:
 
-    libraryDependencies += "io.findify" %% "s3mock" % "0.2.6" % "test",
+    libraryDependencies += "io.github.marko-asplund" %% "s3mock" % "0.2.6" % "test",
 
 On maven, update your `pom.xml` in the following way:
 ```xml
     // add this entry to <dependencies/>
     <dependency>
-        <groupId>io.findify</groupId>
+        <groupId>io.github.marko-asplund</groupId>
         <artifactId>s3mock_2.13</artifactId>
         <version>0.2.6</version>
         <scope>test</scope>
@@ -166,6 +166,8 @@ Scala with Alpakka 1.0.0:
 The MIT License (MIT)
 
 Copyright (c) 2016 Findify AB
+
+Copyright (c) 2023 Marko Asplund
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

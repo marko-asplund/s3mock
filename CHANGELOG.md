@@ -1,3 +1,9 @@
+
+0.2.7
+=======
+* fork project and update publish info
+* update sbt-pgp plugin
+
 0.2.6
 =======
 * scala 2.13 support
