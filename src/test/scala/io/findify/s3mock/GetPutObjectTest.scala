@@ -3,10 +3,10 @@ package io.findify.s3mock
 import java.io.ByteArrayInputStream
 import java.util
 
-import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{HttpMethods, HttpRequest}
-import akka.stream.ActorMaterializer
+import org.apache.pekko.actor.ActorSystem
+import org.apache.pekko.http.scaladsl.Http
+import org.apache.pekko.http.scaladsl.model.{HttpMethods, HttpRequest}
+import org.apache.pekko.stream.ActorMaterializer
 import com.amazonaws.services.s3.model._
 import com.amazonaws.util.IOUtils
 

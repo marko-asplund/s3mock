@@ -1,9 +1,9 @@
 package io.findify.s3mock
 
-import akka.actor.ActorSystem
-import akka.stream.alpakka.s3.S3Settings
-import akka.stream.alpakka.s3.scaladsl.S3
-import akka.stream.{ActorMaterializer, Materializer}
+import org.apache.pekko.actor.ActorSystem
+import org.apache.pekko.stream.connectors.s3.S3Settings
+import org.apache.pekko.stream.connectors.s3.scaladsl.S3
+import org.apache.pekko.stream.{ActorMaterializer, Materializer}
 import better.files.File
 import com.amazonaws.auth.{AWSStaticCredentialsProvider, AnonymousAWSCredentials, BasicAWSCredentials, DefaultAWSCredentialsProviderChain}
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
@@ -83,17 +83,17 @@ trait S3MockTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   def configFor(host: String, port: Int): Config = {
     ConfigFactory.parseMap(Map(
-      "alpakka.s3.proxy.host" -> host,
-      "alpakka.s3.proxy.port" -> port,
-      "alpakka.s3.proxy.secure" -> false,
-      "alpakka.s3.path-style-access" -> true,
-      "alpakka.s3.aws.credentials.provider" -> "static",
-      "alpakka.s3.aws.credentials.access-key-id" -> "foo",
-      "alpakka.s3.aws.credentials.secret-access-key" -> "bar",
-      "alpakka.s3.aws.region.provider" -> "static",
-      "alpakka.s3.aws.region.default-region" -> "us-east-1",
-      "alpakka.s3.buffer" -> "memory",
-      "alpakka.s3.disk-buffer-path" -> ""
+      "pekko.connectors.s3.proxy.host" -> host,
+      "pekko.connectors.s3.proxy.port" -> port,
+      "pekko.connectors.s3.proxy.secure" -> false,
+      "pekko.connectors.s3.path-style-access" -> true,
+      "pekko.connectors.s3.aws.credentials.provider" -> "static",
+      "pekko.connectors.s3.aws.credentials.access-key-id" -> "foo",
+      "pekko.connectors.s3.aws.credentials.secret-access-key" -> "bar",
+      "pekko.connectors.s3.aws.region.provider" -> "static",
+      "pekko.connectors.s3.aws.region.default-region" -> "us-east-1",
+      "pekko.connectors.s3.buffer" -> "memory",
+      "pekko.connectors.s3.disk-buffer-path" -> ""
     ).asJava)
 
   }
