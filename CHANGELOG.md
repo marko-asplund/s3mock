@@ -1,4 +1,9 @@
 
+0.5.0
+=======
+* migrate from Akka 2.5.31 and Akka HTTP 10.1.12 to Pekko 1.0.1 and Pekko HTTP 1.0.0
+* drop Scala 2.11 support
+
 0.2.7
 =======
 * fork project and update publish info
