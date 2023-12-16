@@ -1,6 +1,6 @@
 name := "s3mock"
 
-version := "0.3.0-SNAPSHOT"
+version := "0.6.0-SNAPSHOT"
 
 scalaVersion in ThisBuild := "2.13.2"
 
