@@ -28,7 +28,7 @@ Not supported features (these might be implemented later):
 s3mock package is available for Scala 2.12/2.13 (on Java 8/11). To install using SBT, add these
  statements to your `build.sbt`:
 
-    libraryDependencies += "io.github.marko-asplund" %% "s3mock" % "0.2.6" % "test",
+    libraryDependencies += "io.github.marko-asplund" %% "s3mock" % "0.5.0" % "test",
 
 On maven, update your `pom.xml` in the following way:
 ```xml
@@ -36,7 +36,7 @@ On maven, update your `pom.xml` in the following way:
     <dependency>
         <groupId>io.github.marko-asplund</groupId>
         <artifactId>s3mock_2.13</artifactId>
-        <version>0.2.6</version>
+        <version>0.5.0</version>
         <scope>test</scope>
     </dependency>
 ```
