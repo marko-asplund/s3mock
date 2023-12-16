@@ -1,17 +1,18 @@
 name := "s3mock"
 
-version := "0.2.7-SNAPSHOT"
+version := "0.3.0-SNAPSHOT"
 
 scalaVersion in ThisBuild := "2.13.2"
 
-crossScalaVersions in ThisBuild := Seq("2.11.12", "2.12.10","2.13.2")
+crossScalaVersions in ThisBuild := Seq("2.11.12", "2.12.10", "2.13.2")
 
-val akkaVersion = "2.5.31"
+val pekkoVersion = "1.0.1"
+val pekkoHttpVersion = "1.0.0"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-stream" % akkaVersion,
-  "com.typesafe.akka" %% "akka-http" % "10.1.12",
-  "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % "test",
+  "org.apache.pekko" %% "pekko-stream" % pekkoVersion,
+  "org.apache.pekko" %% "pekko-http" % pekkoHttpVersion,
+  "org.apache.pekko" %% "pekko-stream-testkit" % pekkoVersion % Test,
   "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
   "org.scala-lang.modules" %% "scala-collection-compat" % "2.1.6",
   "com.github.pathikrit" %% "better-files" % "3.9.1",
@@ -20,7 +21,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.8" % "test",
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "test",
   "org.iq80.leveldb" % "leveldb" % "0.12",
-  "com.lightbend.akka" %% "akka-stream-alpakka-s3" % "1.1.2" % "test",
+  "org.apache.pekko" %% "pekko-connectors-s3" % pekkoVersion % "test",
   "javax.xml.bind" % "jaxb-api" % "2.3.0",
   "com.sun.xml.bind" % "jaxb-core" % "2.3.0",
   "com.sun.xml.bind" % "jaxb-impl" % "2.3.0"
