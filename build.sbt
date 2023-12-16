@@ -1,18 +1,12 @@
 name := "s3mock"
 
-version := "0.2.6"
-
-organization := "io.findify"
+version := "0.2.7-SNAPSHOT"
 
 scalaVersion in ThisBuild := "2.13.2"
 
 crossScalaVersions in ThisBuild := Seq("2.11.12", "2.12.10","2.13.2")
 
 val akkaVersion = "2.5.31"
-
-licenses := Seq("MIT" -> url("https://opensource.org/licenses/MIT"))
-
-homepage := Some(url("https://github.com/findify/s3mock"))
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
@@ -43,29 +37,6 @@ libraryDependencies ++= {
 
 parallelExecution in Test := false
 
-publishMavenStyle := true
-
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (isSnapshot.value)
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
-
-pomExtra := (
-    <scm>
-      <url>git@github.com:findify/s3mock.git</url>
-      <connection>scm:git:git@github.com:findify/s3mock.git</connection>
-    </scm>
-    <developers>
-      <developer>
-        <id>romangrebennikov</id>
-        <name>Roman Grebennikov</name>
-        <url>http://www.dfdx.me</url>
-      </developer>
-    </developers>)
-
 enablePlugins(DockerPlugin)
 assemblyJarName in assembly := "s3mock.jar"
 mainClass in assembly := Some("io.findify.s3mock.Main")
@@ -88,5 +59,3 @@ imageNames in docker := Seq(
   ImageName(s"findify/s3mock:${version.value.replaceAll("\\+", "_")}"),
   ImageName(s"findify/s3mock:latest")
 )
-
-publishTo := sonatypePublishToBundle.value
