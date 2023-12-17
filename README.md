@@ -1,7 +1,7 @@
 # S3 mock library for Java/Scala
 
-[![Build Status](https://travis-ci.org/findify/s3mock.svg?branch=master)](https://travis-ci.org/findify/s3mock)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.findify/s3mock_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.findify/s3mock_2.12)
+![Build Status](https://github.com/marko-asplund/s3mock/actions/workflows/ci.yml/badge.svg)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.marko-asplund/s3mock_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.marko-asplund/s3mock_2.13)
 
 s3mock is a web service implementing AWS S3 API, which can be used for local testing of your code using S3
 but without hitting real S3 endpoints.
@@ -39,6 +39,11 @@ On maven, update your `pom.xml` in the following way:
         <version>0.5.0</version>
         <scope>test</scope>
     </dependency>
+```
+
+S3Mock can be run as a standalone application from sbt:
+```bash
+runMain io.findify.s3mock.Main
 ```
 
 S3Mock is also available as a [docker container](https://hub.docker.com/r/findify/s3mock/) for out-of-jvm testing:
@@ -101,7 +106,7 @@ Scala with AWS S3 SDK:
     import com.amazonaws.auth.AWSStaticCredentialsProvider
     import com.amazonaws.auth.AnonymousAWSCredentials
     import com.amazonaws.client.builder.AwsClientBuilder
-    import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
+    import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
     import com.amazonaws.services.s3.AmazonS3
     import com.amazonaws.services.s3.AmazonS3Builder
     import com.amazonaws.services.s3.AmazonS3Client
@@ -151,7 +156,7 @@ Scala with Pekko Connectors 1.0:
       "pekko.connectors.s3.aws.credentials.access-key-id" -> "foo",
       "pekko.connectors.s3.aws.credentials.secret-access-key" -> "bar",
       "pekko.connectors.s3.aws.region.provider" -> "static",
-      "pekko.connectors.s3.aws.region.default-region" -> "us-east-1"      
+      "pekko.connectors.s3.aws.region.default-region" -> "us-east-1"
     ).asJava)
     implicit val system = ActorSystem.create("test", config)
     implicit val mat = ActorMaterializer()
@@ -160,7 +165,23 @@ Scala with Pekko Connectors 1.0:
     val contents = s3a.download("bucket", "key")._1.runWith(Sink.reduce[ByteString](_ ++ _)).map(_.utf8String)
       
 ```
-    
+
+AWS CLI:
+```bash
+    export AWS_ACCESS_KEY_ID=foo
+    export AWS_SECRET_ACCESS_KEY=dummy
+    export AWS_SECRET_KEY=bar
+    export AWS_REGION=eu-north-1
+    export S3_ENDPOINT=http://localhost:8001
+
+    aws s3api create-bucket --bucket my-bucket --endpoint-url=$S3_ENDPOINT
+
+    aws s3api put-object --bucket my-bucket --key my-file --body ./my-file --endpoint-url=$S3_ENDPOINT
+
+    aws s3api get-object --bucket my-bucket --key my-file --endpoint-url=$S3_ENDPOINT my-file-output
+```
+
+
 ## License
 
 The MIT License (MIT)
