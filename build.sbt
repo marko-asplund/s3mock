@@ -35,25 +35,9 @@ libraryDependencies ++= {
 
 parallelExecution in Test := false
 
+enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)
-assemblyJarName in assembly := "s3mock.jar"
-mainClass in assembly := Some("io.findify.s3mock.Main")
-test in assembly := {}
 
-dockerfile in docker := new Dockerfile {
-  from("adoptopenjdk/openjdk11:jre-11.0.7_10-debian")
-  expose(8001)
-  add(assembly.value, "/app/s3mock.jar")
-  entryPoint(
-      "java", 
-      "-Xmx128m", 
-      "-jar", 
-      "--add-opens",
-      "java.base/jdk.internal.ref=ALL-UNNAMED",
-      "/app/s3mock.jar"
-  )
-}
-imageNames in docker := Seq(
-  ImageName(s"findify/s3mock:${version.value.replaceAll("\\+", "_")}"),
-  ImageName(s"findify/s3mock:latest")
-)
+dockerRepository := Some("io.github.marko-asplund")
+dockerBaseImage := "eclipse-temurin:11-jre"
+dockerExposedPorts := Seq(8001)
