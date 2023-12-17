@@ -13,18 +13,15 @@ libraryDependencies ++= Seq(
   "org.apache.pekko" %% "pekko-stream" % pekkoVersion,
   "org.apache.pekko" %% "pekko-http" % pekkoHttpVersion,
   "org.apache.pekko" %% "pekko-stream-testkit" % pekkoVersion % Test,
-  "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
-  "org.scala-lang.modules" %% "scala-collection-compat" % "2.1.6",
-  "com.github.pathikrit" %% "better-files" % "3.9.1",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
+  "org.scala-lang.modules" %% "scala-xml" % "1.3.1",
+  "org.scala-lang.modules" %% "scala-collection-compat" % "2.11.0",
+  "com.github.pathikrit" %% "better-files" % "3.9.2",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
   "com.amazonaws" % "aws-java-sdk-s3" % "1.12.620",
   "org.scalatest" %% "scalatest" % "3.0.8" % "test",
-  "ch.qos.logback" % "logback-classic" % "1.2.3" % "test",
+  "ch.qos.logback" % "logback-classic" % "1.3.14" % "test",
   "org.iq80.leveldb" % "leveldb" % "0.12",
-  "org.apache.pekko" %% "pekko-connectors-s3" % pekkoVersion % "test",
-  "javax.xml.bind" % "jaxb-api" % "2.3.0",
-  "com.sun.xml.bind" % "jaxb-core" % "2.3.0",
-  "com.sun.xml.bind" % "jaxb-impl" % "2.3.0"
+  "org.apache.pekko" %% "pekko-connectors-s3" % pekkoVersion % "test"
 )
 
 libraryDependencies ++= {
